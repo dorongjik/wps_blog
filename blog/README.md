@@ -3,5 +3,5 @@ start Django
 ## 설치할 패키지
 
 ```
-$ ./python_packages.sh
+$ pip install -r requirements.txt
 ```
