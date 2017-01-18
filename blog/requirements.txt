@@ -1,2 +1,1 @@
-django == 1.10.5
-ipython
+-r requirements/production.txt
