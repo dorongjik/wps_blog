@@ -1,14 +1,8 @@
-## header ##
+{% extends "base.html" %}
 
+{% block title %}News{% endblock %}
+
+{% block content %}
 <h1>News</h1>
-<p>this is news page.</p>
-<p>## count ## 개의 영화 정보가 있습니다. </p>
-
-<form method="GET" action="/news/">
-    <input type="text" name="search">
-    <input type="submit" value="검색">
-</form>
-
-## news_cotent ##
-
-## footer ##
+<p> {{ count }} 개의 영화 정보가 표시됩니다. </p>
+{% endblock %}
