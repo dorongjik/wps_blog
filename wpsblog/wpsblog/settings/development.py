@@ -4,7 +4,7 @@ DEBUG = True
 
 INSTALLED_APPS += [
     'debug_toolbar',
-    'django-extensions',
+    'django_extensions',
 ]
 
 MIDDLEWARE += [
