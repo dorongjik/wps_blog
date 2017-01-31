@@ -3,11 +3,12 @@ from .partials import *
 DEBUG = True
 
 INSTALLED_APPS += [
-	'debug_toolbar',
+    'debug_toolbar',
+    'django-extensions',
 ]
 
 MIDDLEWARE += [
-	'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 INTERNAL_IPS = [
