@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^about/$', about, name="about"),
     
     url(r'^posts/$', lists, name="posts-lists"),
-    url(r'^posts/(?P<post_id>\d+)/$', detail, name="posts-room"),
+    url(r'^posts/(?P<post_id>\d+)/$', detail, name="posts-detail"),
 
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
 ]

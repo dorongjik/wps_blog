@@ -3,7 +3,12 @@
 {% block title %} Postlist {% endblock %}
 
 {% block content %}
+
 <h1>Post list</h1>
-<p> 아래에 목록이 뜨면 됩니다. </p>
+<ul>
+    {% for post in posts %}     
+    <a href="{% url "posts-detail" post_id=post.id %}"><h3>{{ post.title }}</h3></a>
+    {% endfor %}
+</ul>
 
 {% endblock %}
