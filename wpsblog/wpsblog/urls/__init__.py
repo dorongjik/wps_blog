@@ -10,6 +10,9 @@ urlpatterns = [
     url(r'^rooms/(?P<room_id>\d+)/$', room, name="room"),
     url(r'^watcha/$', news, name="news"),
     url(r'^about/$', about, name="about"),
+    
+    url(r'^posts/$', lists, name="posts-lists"),
+    url(r'^posts/(?P<post_id>\d+)/$', detail, name="posts-room"),
 
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
 ]
