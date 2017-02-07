@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %} 글 작성 {% endblock %}
+
+{% block content %}
+<h1>시안 올리기</h1>
+<form action="/posts/create/" method="POST">
+    {% csrf_token %}
+    <p>제목</p>
+    <input type="text" name="title">
+    <p>본문</p>
+    <textarea rows="4" cols="50" name="content"></textarea>
+    <br>
+    <input type="submit" value = "publish">
+</form>
+
+
+{% endblock %}

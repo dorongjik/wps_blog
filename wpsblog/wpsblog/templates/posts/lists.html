@@ -5,9 +5,12 @@
 {% block content %}
 
 <h1>Post list</h1>
-<ul>
-    {% for post in posts %}     
-    <a href="{% url "posts-detail" post_id=post.id %}"><h3>{{ post.title }}</h3></a>
+<ul>  
+    {% for post in posts %}
+    <a href="{{ post.get_absolute_url }}">
+    <h3>{{ post.title }}</h3>
+    </a> 
+    <!-- 요놈(get_absolute_url)은 () 없이도 알아서 함수가 실행된다. -->
     {% endfor %}
 </ul>
 
