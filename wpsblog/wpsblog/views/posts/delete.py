@@ -7,5 +7,5 @@ def delete(request, post_id):
     post.delete()
 
     return redirect(
-        reverse("posts-lists")
+        reverse("posts:lists")
     )

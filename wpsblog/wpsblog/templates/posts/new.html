@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>시안 올리기</h1>
-<form action="/posts/create/" method="POST">
+<form action="{% url "posts:create" %}" method="POST">
     {% csrf_token %}
     <p>제목</p>
     <input type="text" name="title">
