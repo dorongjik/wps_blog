@@ -5,6 +5,6 @@ def lists(request):
     return render(request,
         "posts/lists.html",
         {
-            "posts": Post.objects.all() # 여기의 posts가 template으로 날아감
+            "posts": Post.objects.filter(is_public=True) # 여기의 posts가 template으로 날아감
         },
         )
