@@ -3,9 +3,31 @@
 {% block title %} Postlist {% endblock %}
 
 {% block content %}
+    <!-- show post's detail -->
+
     <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
 
     <p><a href="{% url "posts:edit" post_id=post.id %}">수정하기</a></p>
     <p><a href="{% url "posts:delete" post_id=post.id %}">삭제하기</a></p>
+    
+
+    <!-- show comments -->
+    <ul>
+        {% for comment in post.comment_set.all %}
+            <li id="comment-{{ comment.id }}">{{comment.content}}</li>
+            <form action="{% url "posts:delete-comment" post_id=post.id comment_id=comment.id %}">
+                <input type="submit" name="comment-delete" value="삭제">
+            </form>
+            
+        {% endfor %}
+    </ul>
+
+    <!-- comments form -->
+    <form action="{% url "posts:create-comment" post_id=post.id %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name="content">
+        <br>
+        <input type="submit" value="댓글 달기">
+    </form>
 {% endblock %}
