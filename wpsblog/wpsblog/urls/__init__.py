@@ -1,7 +1,9 @@
+from django.conf import settings
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
 from wpsblog.views import *
-from django.conf import settings
+
 
 
 urlpatterns = [
@@ -13,7 +15,7 @@ urlpatterns = [
 
     url(r'^posts/', include("wpsblog.urls.posts", namespace="posts")),
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar
