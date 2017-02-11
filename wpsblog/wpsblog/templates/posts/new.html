@@ -4,7 +4,7 @@
 
 {% block content %}
 <h1>시안 올리기</h1>
-<form action="{% url "posts:create" %}" method="POST">
+<form action="{% url "posts:create" %}" method="POST" enctype="multipart/form-data"">
     {% csrf_token %}
     <p>제목</p>
     <input type="text" name="title">
@@ -12,6 +12,7 @@
     <textarea rows="4" cols="50" name="content"></textarea>
     <br>
     <input type="submit" value = "publish">
+    <input type="file" name="image">
 </form>
 
 

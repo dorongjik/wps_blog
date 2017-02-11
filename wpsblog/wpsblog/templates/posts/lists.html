@@ -7,10 +7,13 @@
 <h1>Post list</h1>
 <ul>  
     {% for post in posts %}
-    <a href="{{ post.get_absolute_url }}">
-    <h3>{{ post.title }} ({{ post.comment_set.count }})</h3>
-    </a>
-    <!-- 요놈(get_absolute_url)은 () 없이도 알아서 함수가 실행된다. -->
+        <li>
+            <a href="{{ post.get_absolute_url }}"> <!-- 요놈(get_absolute_url)은 () 없이도 알아서 함수가 실행된다. -->
+            <h3>{{ post.title }} ({{ post.comment_set.count }})</h3>
+            </a>
+            
+            <img src="{% if post.image %}{{ post.image.url }}{% else %}http://placehold.it/350x150"{% endif %} alt="{{ post.title }}">
+        </li>
     {% endfor %}
 </ul>
 
