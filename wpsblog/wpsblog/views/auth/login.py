@@ -14,7 +14,6 @@ def login(request):
             django_login(request, user)
             return redirect(reverse("home"))
         else:
-            print("잘못입력")
             return redirect(reverse("auth:login"))
 
     # method : GET

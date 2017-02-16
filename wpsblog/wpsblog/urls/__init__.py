@@ -15,7 +15,7 @@ urlpatterns = [
 
     url(r'^posts/', include("wpsblog.urls.posts", namespace="posts")),
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
-    url(r'^auth/', include("wpsblog.urls.auth", namespace="auth")),
+    url(r'^', include("wpsblog.urls.auth", namespace="auth")),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %} 회원가입 {% endblock %}
+
+{% block content %}
+    <h2>{{ request.user.username }}의 페이지</h2>
+    <p>이름 : {{ request  .user.username }}</p>
+    <p>이메일 : {{ request.user.email }}</p>
+
+{% endblock %}

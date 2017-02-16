@@ -7,7 +7,8 @@
         <li><a href="{% url "posts:lists" %}">목록</a></li>
         <li><a href="{% url "posts:new" %}">시안 작성</a></li>
         {% if request.user.is_authenticated %}
-            <p>내 정보 : {{request.user.username}}</p>
+            <li><a href="{% url "auth:mypage" %}">{{request.user.username}}</a></li>
+            <li><a href="{% url "auth:logout" %}">로그아웃</a></li>
         {% else %}
             <li><a href="{% url "auth:login" %}">로그인</a></li>
             <li><a href="{% url "auth:signup" %}">가입</a></li>
