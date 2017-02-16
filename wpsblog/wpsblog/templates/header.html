@@ -6,6 +6,13 @@
         <li><a href="{% url "about" %}">About</a></li>
         <li><a href="{% url "posts:lists" %}">목록</a></li>
         <li><a href="{% url "posts:new" %}">시안 작성</a></li>
+        {% if request.user.is_authenticated %}
+            <p>내 정보 : {{request.user.username}}</p>
+        {% else %}
+            <li><a href="{% url "auth:login" %}">로그인</a></li>
+            <li><a href="{% url "auth:signup" %}">가입</a></li>
+        {% endif %}
+        
         <!-- 여기 위에 있는 url "something" 이 urls 폴더의 __init__ 속에 name="something" 인 놈을 찾아서 연결한다.-->
     </ul> 
 </header>
