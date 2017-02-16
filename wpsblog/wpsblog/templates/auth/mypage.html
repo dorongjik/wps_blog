@@ -4,7 +4,13 @@
 
 {% block content %}
     <h2>{{ request.user.username }}의 페이지</h2>
-    <p>이름 : {{ request  .user.username }}</p>
+    <p>이름 : {{ request.user.username }}</p>
     <p>이메일 : {{ request.user.email }}</p>
 
+    <ul>
+        {% for post in request.user.post_set.all %}
+            <li> <a href="{% url "posts:detail" post_id=post.id %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+    
 {% endblock %}
