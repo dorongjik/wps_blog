@@ -3,16 +3,17 @@
 {% block title %} 로그인 {% endblock %}
 
 {% block content %}
-<h2>로그인</h2>
-<form method="POST" action="{% url "auth:login" %}">
-    {% csrf_token %}
-    <p>username</p>
-    <input type="text" name="username" required="">
-    <p>email</p>
-    <input type="email" name="email" required>
-    <p>password</p>
-    <input type="password" name="password" required>
-    <br>
-    <input type="submit" value="로그인">
-</form>
+{% csrf_token %}
+    <h2>로그인</h2>
+    <form method="POST" action="{% url "auth:login" %}">
+        {% csrf_token %}
+
+        <input type="hidden" name="next_page" value="{{ request.GET.next }}">
+        <p>username</p>
+        <input type="text" name="username" required>
+        <p>password</p>
+        <input type="password" name="password" required>
+        <br>
+        <input type="submit" value="로그인">
+    </form>
 {% endblock %}

@@ -5,18 +5,20 @@ from django.contrib.auth import authenticate, login as django_login
 def login(request):
     if (request.method == "POST"):
         username = request.POST.get("username")
-        email = request.POST.get("email")
         password = request.POST.get("password")
+        next_page = request.POST.get("next_page") or reverse("home")
 
-        user = authenticate(username=username, email=email, password=password)
+        user = authenticate(username=username, password=password)
 
         if user:
             django_login(request, user)
-            return redirect(reverse("home"))
+            return redirect(next_page)
         else:
             return redirect(reverse("auth:login"))
 
-    # method : GET
-    return render(request,
-        "auth/login.html",
-        )
+    else:
+        # method : GET
+        return render(request,
+            "auth/login.html",
+            {},
+            )

@@ -17,7 +17,10 @@
     <!-- show comments -->
     <ul>
         {% for comment in post.comment_set.all %}
-            <li id="comment-{{ comment.id }}">{{comment.content}}</li>
+            <li id="comment-{{ comment.id }}">
+                <p>작성자 : {{ comment.user }}</p>
+                <p>{{ comment.content }}</p>
+            </li>
             <form action="{% url "posts:delete-comment" post_id=post.id comment_id=comment.id %}">
                 <input type="submit" name="comment-delete" value="삭제">
             </form>
