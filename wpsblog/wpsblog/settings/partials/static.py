@@ -11,4 +11,25 @@ MEDIA_ROOT = os.path.join(
     "media",
 )
 
+STATICFILES_STORAGE = 'pipeline.storage.PipelineCachedStorage'
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'pipeline.finders.PipelineFinder',
+)
+
+PIPELINE = {
+    'PIPELINE_ENABLED': True,
+    'STYLESHEETS': {
+        'wpsblog': {
+            'source_filenames': (
+              'css/application.css',
+              'css/partials/*.css',
+            ),
+            'output_filename': 'css/wpsblog.css',
+        }
+    }
+}
+
 MEDIA_URL = '/media/'

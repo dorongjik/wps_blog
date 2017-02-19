@@ -16,4 +16,7 @@
         <br>
         <input type="submit" value="로그인">
     </form>
+
+    <a href="{% url "social:begin" "facebook" %}">facebook으로 로그인하기</a>
+    <a href="{% url "social:begin" "kakao" %}">kakao 로그인하기</a>
 {% endblock %}
