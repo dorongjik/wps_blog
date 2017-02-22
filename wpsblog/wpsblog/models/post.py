@@ -21,6 +21,8 @@ class Post(models.Model):
         blank=True,
         null=True,
     )
+    price = models.PositiveIntegerField()
+    
     is_public = models.BooleanField(
         default=True,
     )

@@ -4,8 +4,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from wpsblog.views import *
 
-
-
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', home, name="home"),

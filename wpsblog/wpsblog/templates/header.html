@@ -1,19 +1,78 @@
-<header>
-    <h1>Header</h1>
-    <ul>
-        <li><a href="{% url "home" %}">Home</a></li>
-        <li><a href="{% url "news" %}">News</a></li>
-        <li><a href="{% url "about" %}">About</a></li>
-        <li><a href="{% url "posts:lists" %}">목록</a></li>
-        <li><a href="{% url "posts:new" %}">시안 작성</a></li>
-        {% if request.user.is_authenticated %}
-            <li><a href="{% url "auth:mypage" %}">{{request.user.username}}</a></li>
-            <li><a href="{% url "auth:logout" %}">로그아웃</a></li>
-        {% else %}
-            <li><a href="{% url "auth:login" %}">로그인</a></li>
-            <li><a href="{% url "auth:signup" %}">가입</a></li>
-        {% endif %}
+<header class="header clearfix">
+
+  <!-- TOPBAR -->
+  <nav class="topBar">
+    <div class="container">
+      <div class="row">
         
-        <!-- 여기 위에 있는 url "something" 이 urls 폴더의 __init__ 속에 name="something" 인 놈을 찾아서 연결한다.-->
-    </ul> 
+        <div class="col-md-6 hidden-sm hidden-xs"> 
+          <!-- 공간 차지용 -->
+        </div>
+        
+        <div class="col-md-6 col-xs-12">
+          <ul class="list-inline pull-right top-right">
+            <li><a href="{% url "posts:lists" %}">디자인 구매하기</a></li>
+            <li><a href="{% url "posts:new" %}">디자인 판매하기</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url "auth:mypage" %}">{{ request.user.username }} 님</a></li>
+            <li><a href="{% url "auth:logout" %}">로그아웃</a></li>
+            {% else %}
+            <li class="account-login"><span><a data-toggle="modal" href="{% url "auth:login" %}">로그인</a><small>or</small><a data-toggle="modal" href="{% url "auth:signup" %}">회원가입</a></span></li>
+            {% endif %}
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </nav> 
+  <!-- TOPBAR END  -->
+
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-main navbar-default" role="navigation">
+    <div class="container">
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav navbar-right">
+        </ul>
+      </div><!-- /.navbar-collapse -->
+      
+      <div class="col-xs-12">
+          <h3></h3>
+      </div>
+
+      <div class="searchBox">
+        <span class="input-group">
+          <input type="text" class="form-control" placeholder="디자인 검색" aria-describedby="basic-addon2">
+          <button type="submit" class="input-group-addon"><i class="fa fa-search"></i></button>
+        </span>
+      </div>
+       
+      <div class="col-xs-12">
+        <h3></h3>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- NAVBAR END -->
+
+<!-- 마이 부분 -->
+  <!-- <ul>
+      <li><a href="{% url "home" %}">Home</a></li>
+      <li><a href="{% url "news" %}">News</a></li>
+      <li><a href="{% url "about" %}">About</a></li>
+      <li><a href="{% url "posts:lists" %}">디자인 구매하기</a></li>
+      <li><a href="{% url "posts:new" %}">디자인 판매하기</a></li>
+      {% if request.user.is_authenticated %}
+          <li><a href="{% url "auth:mypage" %}">{{ request.user.username }}</a></li>
+          <li><a href="{% url "auth:logout" %}">로그아웃</a></li>
+      {% else %}
+          <li><a href="{% url "auth:login" %}">로그인</a></li>
+          <li><a href="{% url "auth:signup" %}">가입</a></li>
+      {% endif %}
+      
+      여기 위에 있는 url "something" 이 urls 폴더의 __init__ 속에 name="something" 인 놈을 찾아서 연결한다.
+  </ul> -->
 </header>

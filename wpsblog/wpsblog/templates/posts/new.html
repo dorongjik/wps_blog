@@ -5,14 +5,16 @@
 {% block content %}
 <h1>시안 올리기</h1>
 <form action="{% url "posts:create" %}" method="POST" enctype="multipart/form-data"">
-    {% csrf_token %}
-    <p>제목</p>
-    <input type="text" name="title">
-    <p>본문</p>
-    <textarea rows="4" cols="50" name="content"></textarea>
-    <br>
-    <input type="file" name="image">
-    <input type="submit" value="publish">
+  {% csrf_token %}
+  <p>제목</p>
+  <input type="text" name="title">
+  <p>본문</p>
+  <textarea rows="4" cols="50" name="content"></textarea>
+  <br>
+  <p>가격</p>
+  <input type="number" name="price">
+  <input type="file" name="image">
+  <input type="submit" value="publish">
 </form>
 
 

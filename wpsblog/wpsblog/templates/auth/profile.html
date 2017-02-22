@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %} 로그인 {% endblock %}
+
+{% block content %}
+
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix userProfile">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group" role="group" aria-label="...">
+          <a href="{% url "auth:mypage" %}" class="btn btn-default"><i class="fa fa-th" aria-hidden="true"></i>마이 페이지</a>
+          <a href="{% url "auth:profile" %}" class="btn btn-default active"><i class="fa fa-user" aria-hidden="true"></i>개인정보 수정</a>
+          <a href="account-all-orders.html" class="btn btn-default"><i class="fa fa-list" aria-hidden="true"></i>All Orders</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper profile">
+          <div class="orderBox">
+            <h4>개인 정보 수정</h4>
+          </div>
+          <div class="row">
+            <div class="col-md-10 col-sm-9 col-xs-12">
+                <form class="form-horizontal">
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">이름</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="text" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">ㅔ</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="text" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">Phone Number</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="text" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">이메일</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="email" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">Password</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="password" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">New Password</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="password" class="form-control" id="" placeholder="">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3">
+                      <button type="submit" class="btn btn-primary btn-block">SAVE INFO</button>
+                    </div>
+                  </div>
+                </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

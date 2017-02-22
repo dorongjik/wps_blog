@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'pipeline',
     'social_django',
+    'taggit',
     
     'wpsblog',
 ]

@@ -3,26 +3,104 @@
 {% block title %} 회원가입 {% endblock %}
 
 {% block content %}
-    <h2>{{ request.user.username }}의 페이지</h2>
-    <p>이름 : {{ request.user.username }}</p>
-    <p>이메일 : {{ request.user.email }}</p>
+<section class="mainContent clearfix userProfile">
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="btn-group" role="group" aria-label="...">
+            <a href="{% url "auth:mypage" %}" class="btn btn-default active"><i class="fa fa-th" aria-hidden="true"></i>마이 페이지</a>
+            <a href="{% url "auth:profile" %}" class="btn btn-default"><i class="fa fa-user" aria-hidden="true"></i>개인정보수정</a>
+        </div>
+      </div>
+    </div>
 
-    <p>내가 쓴 글 ({{ user.post_set.count }})</p>
-    <ul>
-        {% for post in request.user.post_set.all %}
-            <li> <a href="{% url "posts:detail" post_id=post.id %}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper">
+          <h3>환영합니다. <span>{{ request.user.username }}</span> 님</h3>
+          <br><br>
+            <h4>판매중 디자인 ({{ user.post_set.count }})</h4>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>디자인</th>
+                    <th>등록 날짜</th>
+                    <th>댓글 수</th>
+                    <th>가격</th>
+                    <th>진행 여부</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  {% for post in request.user.post_set.all %}
+                  <tr>
+                    <td>{{ post.title }}</td>
+                    <td>언제</td>
+                    <td>{{ post.comment_set.count }}</td>
+                    <td>{{ post.price }}</td>
+                    <td>{{ post.is_public }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          
+          
+            <h4>내가 쓴 댓글 ({{ user.comment_set.count }})</h4>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>댓글 내용</th>
+                    <th>등록 날짜</th>
+                    <th>해당 디자인</th>
+                    <th>가격</th>
+                  </tr>
+                </thead>
+                
+                <tbody>
+                  {% for comment in request.user.comment_set.all %}
+                  <tr>
+                    <td>{{ comment.content }}</td>
+                    <td>언제</td>
+                    <td>{{ comment.post.title }}</td>
+                    <!-- <a href="{% url "posts:detail" post_id=comment.post.id %}"></a> -->
+                    <td>{{ comment.post.price }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <p>내가 쓴 댓글 ({{ user.comment_set.count }})</p>
-    <ul>
-        {% for comment in request.user.comment_set.all %}
-            <li>
-                <a href="{{ comment.get_absolut_url }}">{{ comment.content }}</a>
-                on
-                <a href="{% url "posts:detail" post_id=comment.post.id %}">{{ comment.post.title }}</a>
 
-            </li>
-        {% endfor %}
-    </ul>
+
+  <h2>{{ request.user.username }}의 페이지</h2>
+  <p>이름 : {{ request.user.username }}</p>
+  <p>이메일 : {{ request.user.email }}</p>
+
+  <p>내가 쓴 글 ({{ user.post_set.count }})</p>
+  <ul>
+    {% for post in request.user.post_set.all %}
+        <li><a href="{% url "posts:detail" post_id=post.id %}">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <p>내가 쓴 댓글 ({{ user.comment_set.count }})</p>
+  <ul>
+    {% for comment in request.user.comment_set.all %}
+      <li>
+          <a href="{{ comment.get_absolut_url }}">{{ comment.content }}</a>
+          on
+          <a href="{% url "posts:detail" post_id=comment.post.id %}">{{ comment.post.title }}</a> 
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
