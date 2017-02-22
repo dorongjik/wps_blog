@@ -1,9 +1,12 @@
 from django.db import models
+from wpsblog.models.post import Post
 
-class tag(models.Model):
+class Tag(models.Model):
     name = models.CharField(
         max_length=256,
     )
+
+    post_set = models.ManyToManyField(Post)
 
     @property
     def full_name(self):
