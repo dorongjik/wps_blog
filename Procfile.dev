@@ -1,4 +1,4 @@
 web: python wpsblog/manage.py runserver 8000
-worker: celery --workdir=wpsblog/ --app=wpsblog.wpsblog:app worker --loglevel INFO
-flower: celery --workdir=wpsblog/ --app=wpsblog.wpsblog:app flower
+worker: celery --workdir=wpsblog/ --app=wpsblog.celery:app worker --loglevel INFO
+flower: celery --workdir=wpsblog/ --app=wpsblog.celery:app flower
 
