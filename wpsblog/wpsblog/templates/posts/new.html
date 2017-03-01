@@ -1,10 +1,91 @@
 {% extends "base.html" %}
 
-{% block title %} 글 작성 {% endblock %}
+{% block title %} 디자인 등록하기 {% endblock %}
 
 {% block content %}
-<h1>시안 올리기</h1>
-<form action="{% url "posts:create" %}" method="POST" enctype="multipart/form-data"">
+
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix signUp">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+       <div class="panel-heading"><h3>디자인 제출 요령</h3></div>
+        <div class="panel-body">
+          <div class="form-group">
+            <label for="">유의사항</label>
+            <p>1. 제작한 디자인에서 저작권, 라이센스 등의 문제가 발생할 수 있는지 다시 한번 확인해 주세요.</p>
+            <p>2. 오로지 자신이 디자인한 디자인만 등록합니다. 확인되지 않은 파일이거나 출처의 확신이 없을 경우에는 사용하지 않습니다.</p>
+            <p>3.저작권 및 디자인파일에 문제가 있다고 판단될경우 관리자에 의해 등록이 안될수도 있습니다.</p>
+          </div>
+          <div class="form-group">
+            <label for="">저작권</label>
+            <p>1. 판매회원이 등록한 디자인의 저작권은 판매회원에게 있으며 판매된 디자인은 구매를 성사한 디자인 구매회원에게 귀속됩니다.</p>
+            <p>2. 판매회원은 스톡디자인의 프리랜스 디자이너로 디자인 판매과정에서 유발되는 저작권법 위반 등 각종 법적 문제에 대해 전적으로 책임을 지며, 이로 인해 발생되는 회사의 모든 손해에 대해 전적으로 부담합니다.</p>
+            <p>3. 판매디자인을 비롯해 스톡디자인에 등록된 모든 디자인은 스톡디자인의 마케팅 및 홍보의 용도로 사용될 수 있습니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-sm-6 col-xs-12">
+      <div class="panel panel-default">
+        <div class="panel-heading"><h3>디자인 등록</h3></div>
+        <div class="panel-body">
+          <form action="{% url "posts:create" %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="form-group">
+              <label for="">제목</label>
+              <input type="text" class="form-control" name="title" placeholder="커피숍로고" required>
+            </div>
+            <div class="form-group">
+              <label for="">가격</label>
+              <input type="number" class="form-control" name="price" placeholder="30000" required>
+            </div>
+            <div class="form-group">
+              <label for="">내용</label>
+              <textarea class="form-control" rows="4" cols="50" name="content" placeholder="원두를 이용한 커피숍로고, 원두형태를 살림으로써 커피,카페와 어울리는 디자인을 함."></textarea>
+            </div>
+            <div class="form-group">
+              <label for="">태그</label>
+              <input type="text" class="form-control" placeholder="#커피 #커피숍 #로고 #디자인 #카페 #원두">
+            </div>
+            <div class="form-group">
+              <label for="">휴대전화</label>
+              <input type="text" class="form-control" name="phone" placeholder="010-4807-4237" required>
+            </div>
+            <div class="form-group">
+              <label for="">권장 사이즈</label>
+              <p>가로x세로: 500px x 370px(가로 사이즈는 최대 1000px을 넘지 않음),<br>해상도 72dpi, RGB모드의 jpeg파일.</p>
+              <input type="file" name="image" class="btn">
+            </div>
+            <div class="form-group">
+              <label for="">파일</label>
+              <p>1. 원본파일의 경우 ai또는 psd파일을 등록. <br>
+              2. 등록완료가 된 디자인은 임의로 삭제가 불가능합니다.(무분별한 등록은 삼가 주세요.)</p>
+              <input type="file" name="original_file" class="btn">
+            </div>
+            <input type="submit" class="btn btn-primary btn-block"><br><br>
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" required> 위의 안내사항을 모두 이해하였으며 위와 같은 주의와 안내에도 제출한 디자인의
+                        저작권 및 라이센스 관련 문제 및 법적 문제에 대해 디자이너 본인이 전적으로
+                        책임을 지며, 이로 인해 발생되는 회사의 모든 손해에 대해 전적으로 부담합니다.
+                        또한 스톡디자인은 위 문제를 유발한 디자이너의 활동을 정지 및 금지할 수 있습니다.
+                        이에 동의합니다.
+              </label>
+            </div>
+            <a href="{% url "policy:terms" %}"><button type="button" class="btn btn-link btn-block"><span>STOCKDESIGN 약관보기</span></a>
+        </form>
+        </div> <!-- "panel-body" -->
+      </div> <!-- panel panel-default -->
+    </div> <!-- col-sm-6 col-xs-12 -->
+  </div> <!-- row -->
+</div> <!-- container -->
+</section>
+
+
+<form action="{% url "posts:create" %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
   <p>제목</p>
   <input type="text" name="title">
@@ -16,6 +97,5 @@
   <input type="file" name="image">
   <input type="submit" value="publish">
 </form>
-
 
 {% endblock %}

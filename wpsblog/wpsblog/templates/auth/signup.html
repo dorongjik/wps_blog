@@ -12,6 +12,7 @@
         <div class="panel-heading"><h3>회원 가입</h3></div>
         <div class="panel-body">
           <form action="{% url "auth:signup" %}" method="POST" role="form">
+          {% csrf_token %}
             <div class="form-group">
               <label for="">username</label>
               <input type="text" class="form-control" name="username" required>

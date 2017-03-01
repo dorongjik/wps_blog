@@ -4,17 +4,39 @@
 
 {% block content %}
 
-<h1>Post list</h1>
-<ul>  
+<section class="mainContent clearfix productsContent">
+  <div class="container">
+    <div class="row">
+      {% for post in posts %}
+      <div class="col-md-3 col-sm-4 col-xs-12">
+        <div class="productBox">
+          <a href="{{ post.get_absolute_url }}">
+            <div class="productImage clearfix">
+              <img src="{{ post.get_image_url }}" alt="{{ post.title }}">
+            </div>
+            <div class="productCaption clearfix">
+              <h5>{{ post.title }} ({{ post.comment_set.count }})</h5>
+              <h3>{{ post.price }}</h3>
+            </div>
+          </a>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+
+<!-- <ul>  
     {% for post in posts %}
         <li>
-            <a href="{{ post.get_absolute_url }}"> <!-- 요놈(get_absolute_url)은 () 없이도 알아서 함수가 실행된다. -->
-            <h3>{{ post.title }} ({{ post.comment_set.count }})</h3>
+            <a href="{{ post.get_absolute_url }}"> 
+            <h3>{{ post.title }} ({{ post.comment_set.count }})</h3> 요놈(get_absolute_url)은 () 없이도 알아서 함수가 실행된다.
             </a>
             
             <img src="{{ post.get_image_url }}" alt="{{ post.title }}">
         </li>
     {% endfor %}
-</ul>
-
+</ul>-->
 {% endblock %}

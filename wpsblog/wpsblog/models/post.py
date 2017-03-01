@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class PostManager(models.Manager):
     def public(self):
         return self.filter(is_public=True)
+
+    def ad(self):
+        return self.filter(is_being_ad=True)
         
 
 class Post(models.Model):
@@ -17,7 +20,15 @@ class Post(models.Model):
     )
 
     content = models.TextField()
+    phone = models.CharField(
+        max_length=120,
+    )
     image = models.ImageField(
+        blank=True,
+        null=True,
+    )
+    original_file = models.FileField(
+        upload_to='uploads/%Y/%m/%d/',
         blank=True,
         null=True,
     )
@@ -27,12 +38,12 @@ class Post(models.Model):
         default=True,
     )
 
-    is_being_add = models.BooleanField(
+    is_being_ad = models.BooleanField(
         default=False,
     )
 
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+    # updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
