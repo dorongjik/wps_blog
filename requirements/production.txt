@@ -10,3 +10,5 @@ redis
 flower
 gunicorn
 social-auth-app-django
+django-storages-redux
+boto
