@@ -20,12 +20,13 @@ import dj_database_url
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'NAME': 'puzzle',
 #         'USER': 'puzzle',
-#         'PASSWORD': 'puzzle',
+#         'PASSWORD': '',
 #         'HOST': 'localhost',
 #         'PORT': '',
 #     }
 # }
-
-
+ 
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config(default=os.environ.get("DATABASE_URL"),)
+DATABASES['default'] = dj_database_url.config(
+    default=os.environ.get("DATABASE_URL"),
+    )
