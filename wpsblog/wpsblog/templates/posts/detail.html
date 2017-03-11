@@ -92,7 +92,9 @@
         <h4 class="media-heading">{{comment.user}}</h4>
         <h4><span><i class="fa fa-calendar" aria-hidden="true"></i>{{ comment.created_at }}</span></h4>
         <p>{{ comment.content }}</p>
-        <button class="btn btn-link" type="submit">답변</button>
+        <form action="{% url "posts:delete-comment" post_id=post.id comment_id=comment.id %}">
+          <input type="submit" name="comment-delete" value="댓글 삭제">
+        </form>
       </div>
     </div>
     {% endfor %}
@@ -138,7 +140,7 @@
                 <p>{{ comment.content }}</p>
             </li>
             <form action="{% url "posts:delete-comment" post_id=post.id comment_id=comment.id %}">
-                <input type="submit" name="comment-delete" value="삭제">
+                <input type="submit" name="comment-delete" value="댓글 삭제">
             </form>
             
         {% endfor %}
