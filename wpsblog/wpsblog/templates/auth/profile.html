@@ -24,46 +24,41 @@
           </div>
           <div class="row">
             <div class="col-md-10 col-sm-9 col-xs-12">
-                <form class="form-horizontal">
+                <form action="{% url "auth:update_profile" %}" method="POST">
+                {% csrf_token %}
                   <div class="form-group">
-                    <label for="" class="col-md-2 col-sm-3 control-label">이름</label>
+                    <label for="" class="col-md-2 col-sm-3 control-label">성함(예금주)</label>
                     <div class="col-md-10 col-sm-9">
-                      <input type="text" class="form-control" id="" placeholder="">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="" class="col-md-2 col-sm-3 control-label"></label>
-                    <div class="col-md-10 col-sm-9">
-                      <input type="text" class="form-control" id="" placeholder="">
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="" class="col-md-2 col-sm-3 control-label">Phone Number</label>
-                    <div class="col-md-10 col-sm-9">
-                      <input type="text" class="form-control" id="" placeholder="">
+                      <input type="text" class="form-control" value="{{ request.user.first_name }}" name="first_name">
                     </div>
                   </div>
                   <div class="form-group">
                     <label for="" class="col-md-2 col-sm-3 control-label">이메일</label>
                     <div class="col-md-10 col-sm-9">
-                      <input type="email" class="form-control" id="" placeholder="">
+                      <input type="email" class="form-control" value="{{ request.user.username }}" name="username">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="" class="col-md-2 col-sm-3 control-label">Password</label>
+                    <label for="" class="col-md-2 col-sm-3 control-label">휴대폰</label>
                     <div class="col-md-10 col-sm-9">
-                      <input type="password" class="form-control" id="" placeholder="">
+                      <input type="text" class="form-control" value="{{ request.user.email }}">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="" class="col-md-2 col-sm-3 control-label">New Password</label>
+                    <label for="" class="col-md-2 col-sm-3 control-label">은행/계좌 번호</label>
                     <div class="col-md-10 col-sm-9">
-                      <input type="password" class="form-control" id="" placeholder="">
+                      <input type="text" class="form-control" value="{{ request.user.last_name }}" placeholder="ex)국민/94758751355" name="last_name">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="" class="col-md-2 col-sm-3 control-label">비밀번호 변경</label>
+                    <div class="col-md-10 col-sm-9">
+                      <input type="password" class="form-control" name="password">
                     </div>
                   </div>
                   <div class="form-group">
                     <div class="col-md-offset-10 col-md-2 col-sm-offset-9 col-sm-3">
-                      <button type="submit" class="btn btn-primary btn-block">SAVE INFO</button>
+                      <button type="submit" class="btn btn-primary btn-block">저장</button>
                     </div>
                   </div>
                 </form>

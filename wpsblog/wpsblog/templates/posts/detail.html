@@ -29,7 +29,12 @@
           <h3>{{ post.price }}</h3>
           <p>{{ post.content }}</p>
           <div class="btn-area">
-            <a href="cart-page.html" class="btn btn-primary btn-block">구매하기<i class="fa fa-angle-right" aria-hidden="true"></i></a> 
+            <form action="{% url "checkout:step1" %}" method="POST" >
+              {% csrf_token %}
+              <input type="hidden" name="post_id" value="{{ post.id }}">
+              <input type="hidden" name="user_id" value="{{ user.id }}">
+              <input type="submit" value="구매하기" class="btn btn-primary btn-block">
+            </form>
           </div>
           <div class="tabArea">
             <ul class="nav nav-tabs">
@@ -123,17 +128,17 @@
 
     <!-- show post's detail -->
 
-    <h1>{{ post.title }}</h1>
+    <!-- <h1>{{ post.title }}</h1>
     <p>{{ post.content }}</p>
 
     <img src="{{ post.get_image_url }}" alt="{{ post.title }}">
     
     <p><a href="{% url "posts:edit" post_id=post.id %}">수정하기</a></p>
-    <p><a href="{% url "posts:delete" post_id=post.id %}">삭제하기</a></p>
+    <p><a href="{% url "posts:delete" post_id=post.id %}">삭제하기</a></p> -->
     
 
     <!-- show comments -->
-    <ul>
+    <!-- <ul>
         {% for comment in post.comment_set.all %}
             <li id="comment-{{ comment.id }}">
                 <p>작성자 : {{ comment.user }}</p>
@@ -144,13 +149,13 @@
             </form>
             
         {% endfor %}
-    </ul>
+    </ul> -->
 
     <!-- comments form -->
-    <form action="{% url "posts:create-comment" post_id=post.id %}" method="POST">
+    <!-- <form action="{% url "posts:create-comment" post_id=post.id %}" method="POST">
         {% csrf_token %}
         <input type="text" name="content">
         <br>
         <input type="submit" value="댓글 달기">
-    </form>
+    </form> -->
 {% endblock %}

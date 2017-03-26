@@ -1,0 +1,167 @@
+{% extends "base.html" %}
+
+{% block title %} 결제 {% endblock %}
+
+{% block content %}
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix stepsWrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper clearfix stepsPage">
+          <div class="row progress-wizard" style="border-bottom:0;">
+
+            <div class="col-xs-4 progress-wizard-step complete fullBar">
+              <div class="text-center progress-wizard-stepnum">주문하기!</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="checkout-step-1.html" class="progress-wizard-dot"></a>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step active">
+              <div class="text-center progress-wizard-stepnum">완료된 디자인 확인하기!</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="checkout-step-4.html" class="progress-wizard-dot"></a>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">거래완료하기!</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a href="checkout-complete.html" class="progress-wizard-dot"></a>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step complete">
+              <div class="text-center progress-wizard-stepnum">꼼꼼히 작성해주세요!</div>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">3일 이내에 받아보실수있어요!</div>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">7일 이내에 자동완료됩니다!</div>
+            </div>
+
+          </div>
+
+          <h4>구매 내역</h4>
+           <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>디자인</th>
+                    <th>이름</th>
+                    <th>가격</th>
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-xs-2">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                      <span class="cartImage"><img src="{{ post.get_image_url }}" alt="image"></span>
+                    </td>
+                    <td class="col-xs-4">{{ post.title }}</td>
+                    <td class="col-xs-2">{{ post.price }}</td>
+
+                  </tr>
+
+
+                </tbody>
+              </table>
+
+            </div>
+
+          <form action="" class="row" method="POST" role="form">
+            <div class="col-xs-12">
+              <div class="page-header">
+                <h4>주문내역</h4>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">디자인 텍스트</h4>
+                </div>
+                <div class="panel-body">
+                  <address>
+                    <strong>{{ designtext }}</strong><br>
+
+                  </address>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">받아볼 이메일</h4>
+                </div>
+                <div class="panel-body">
+                  <address>
+                    <strong>{{ email }}</strong><br>
+
+                  </address>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">결제방법</h4>
+                </div>
+                <div class="panel-body">
+                  <address>
+                    <span>{{ paymentMethod }}</span>
+                  </address>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">기타요청사항</h4>
+                </div>
+                <div class="panel-body">
+                  <address>
+                    <span>{{ demands }}</span>
+                  </address>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h4 class="panel-title">구매자 정보</h4>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                      <address>
+                      <span>이름: {{ request.user.username }}</span><br>
+                        <a href="#">이메일: {{ email }}</a> <br>
+                        <span>핸드폰: {{ phone }}</span>
+                      </address>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12">
+              <div class="well well-lg clearfix">
+                <ul class="pager">
+                <li class="previous"><a href="checkout-step-1.html">뒤로가기</a></li>
+                  <li class="next"><a href="checkout-complete.html">완료하기</a></li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

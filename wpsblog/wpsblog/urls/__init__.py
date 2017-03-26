@@ -13,6 +13,7 @@ urlpatterns = [
 
     url(r'^posts/', include("wpsblog.urls.posts", namespace="posts")),
     url(r'^policy/', include("wpsblog.urls.policy", namespace="policy")),
+    url(r'^checkout/', include("wpsblog.urls.checkout", namespace="checkout")),
     
     url('', include('social_django.urls', namespace='social')),
     

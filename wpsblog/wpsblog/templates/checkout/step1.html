@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %} 결제 {% endblock %}
+
+{% block content %}
+
+<!-- MAIN CONTENT SECTION -->
+<section class="mainContent clearfix stepsWrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="innerWrapper clearfix stepsPage">
+          <div class="row progress-wizard" style="border-bottom:0;">
+            <div class="col-xs-4 progress-wizard-step complete">
+              <div class="text-center progress-wizard-stepnum">주문하기!</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a class="progress-wizard-dot"></a>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">완료된 디자인 확인하기!</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a class="progress-wizard-dot"></a>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">거래완료하기!</div>
+              <div class="progress"><div class="progress-bar"></div></div>
+              <a class="progress-wizard-dot"></a>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step complete">
+              <div class="text-center progress-wizard-stepnum">꼼꼼히 작성해주세요!</div>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">3일 이내에 받아보실수있어요!</div>
+            </div>
+
+            <div class="col-xs-4 progress-wizard-step disabled">
+              <div class="text-center progress-wizard-stepnum">7일 이내에 자동완료됩니다!</div>
+            </div>
+          </div>
+
+          <h4>구매 내역</h4>
+           <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>디자인</th>
+                    <th>이름</th>
+                    <th>가격</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="col-xs-2">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+                      <img src="{{ post.get_image_url }}" alt="image" width="150px" height="120px">
+                    </td>
+                    <td class="col-xs-4">{{ post.title }}</td>
+                    <td class="col-xs-2">{{ post.price }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          
+          <form action="{% url "checkout:step2" %}" class="row" method="POST" role="form">
+          {% csrf_token %}
+            <div class="col-xs-12">
+              <div class="page-header">
+                <h4>주문정보</h4>
+              </div>
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <label for="">디자인 텍스트</label>
+              <input type="text" class="form-control" name="designtext">
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <label for="">파일받을 이메일</label>
+              <input type="email" class="form-control" value="{{ request.user.email }}" name="email">
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <label for="">연락받을 번호</label>
+              <input type="text" class="form-control" value="{{ request.user.phone }}" name="phone">
+            </div>
+            <div class="form-group col-sm-6 col-xs-12">
+              <label for="">기타 요청사항</label>
+              <input type="text" class="form-control" name="demands">
+            </div>
+            <input type="text" name="post_id" value="{{ post.id }}">
+
+
+            <div class="col-xs-12">
+              <div class="page-header">
+                <h4>결제정보</h4>
+              </div>
+            </div>
+
+            <div class="form-group col-sm-4 col-xs-12">
+              <label for="">결제방법</label>
+              <span class="step-drop">
+                <select name="paymentMethod" class="select-drop" >
+                  <option value="무통장입금">무통장입금 (가상계좌)</option>
+                  <option value="계좌이체">계좌이체</option>
+                  <option value="신용카드">신용카드</option>
+                  <option value="휴대폰">휴대폰</option>
+                </select>
+              </span>
+            </div>
+            
+            <div class="col-xs-12">
+              <div class="well well-lg clearfix">
+                <ul class="pager">
+                  <input type="submit" value="주문하기"></a>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+{% endblock %}

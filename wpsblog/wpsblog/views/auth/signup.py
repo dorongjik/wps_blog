@@ -5,12 +5,12 @@ from django.contrib.auth.models import User
 def signup(request):
     if (request.method == "POST"):
         username = request.POST.get("username")
-        email = request.POST.get("email")
+        first_name = request.POST.get("first_name")
         password = request.POST.get("password")
 
         user = User.objects.create_user(
             username = username,
-            email = email,
+            first_name = first_name,
             password = password,
         )
 

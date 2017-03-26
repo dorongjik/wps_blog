@@ -5,33 +5,88 @@
 {% block content %}
 <!-- MAIN CONTENT SECTION -->
 <section class="mainContent clearfix signUp">
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h3>회원 가입</h3></div>
-        <div class="panel-body">
-          <form action="{% url "auth:signup" %}" method="POST" role="form">
-          {% csrf_token %}
-            <div class="form-group">
-              <label for="">username</label>
-              <input type="text" class="form-control" name="username" required>
+  <div class="container">
+    <form action="{% url "auth:signup" %}" method="POST" role="form">
+    {% csrf_token %}
+      <div class="row">
+        <div class="col-sm-6 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>회원 가입</h3></div>
+            <div class="panel-body">  
+                <div class="form-group">
+                  <input type="text" class="form-control" name="first_name" placeholder="성함" required>
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" name="username" placeholder="이메일" required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" value="password" placeholder="비밀번호" required>
+                </div>
+                <!-- <button type="submit" class="btn btn-primary btn-block">가입하기</button> -->
+                <a href="{% url "auth:login" %}"><button type="button" class="btn btn-link btn-block"><span>이미 가입하셨나요?</span> 로그인 하기</button></a>
             </div>
-            <div class="form-group">
-              <label for="">Email</label>
-              <input type="email" class="form-control" name="email" required>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading"><h3>약관동의</h3></div>
+            <div class="panel-body">
+              <form action="" method="POST" role="form">
+
+                <div class="form-group">
+                  <label for=""></label>
+                  <h4>스톡디자인 서비스 이용약관 (필수)</h4>
+                  <p>본 약관은 퍼즐(이하 "회사")이 운영하는 웹사이트(이하 “사이트”)를 통해 인터넷 관련 서비스를 제공함에 있어, 회사가 제공하는 서비스와 관련하여, 이를 이용하는 가입자(이하 “회원” 또는 “개인회원”)의 이용조건 및 제반 절차, 기타 필요한 사항을 규정함을 목적으로 합니다.</p>
+
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">전체보기</button>
+                <p></p>
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" required> 동의하기
+                  </label>
+                </div>
+
+                <div class="form-group">
+                  <label for=""></label>
+                </div>
+
+                <h4>개인정보 처리방침 (필수)</h4>
+                <p>퍼즐(이하 ‘당사’라 합니다)은 당사가 운영하는 인터넷사이트(www.stockdesign.co.kr 이하 “스톡디자인”) 고객의 개인정보를 매우 중요시하며, 고객의 개인정보를 보호하여 개인정보 유출로 인한 피해가 발생하지 않도록 하겠다는 의지에서 ‘정보통신망 이용촉진 및 정보보호에 관한 법률’ 상의 개인정보보호규정 및 정보통신부에서 제정한 개인정보보호지침 제7조에 의거하여 개인정보취급방침을 작성하였으며 이를 명시합니다.</p>
+
+                  <button type="submit" class="btn btn-primary btn-block">전체보기</button>
+                  <p></p>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" required> 동의하기
+                    </label>
+                  </div>
+
+                <div class="form-group">
+                  <label for=""></label>
+                </div>
+                <h4>마케팅 정보수신 (선택)</h4>
+                  <p>수집ㆍ이용목적</p>
+                  <p>- 신규 서비스, 이벤트, 서비스 관련 맞춤형 광고 및 재능정보 전송</p>
+                  <p>수집항목: 이메일 수신동의, SMS/MMS 수신동의</p>
+                  <p>보유 및 이용기간: 서비스 이용시까지</p>
+                  <p>※ 선택사항에 동의하지 않으셔도 회원가입은 계속 진행할 수 있습니다.</p>
+                  <p></p>
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox"> 동의하기
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block">가입완료</button>
+              </form>
             </div>
-            <div class="form-group">
-              <label for="">Password</label>
-              <input type="password" class="form-control" name="password" required>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">가입하기</button>
-            <button type="button" class="btn btn-link btn-block"><span>All have an account?</span> Log in</button>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
   </div>
-</div>
 </section>
+
 {% endblock %}

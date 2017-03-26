@@ -7,5 +7,6 @@ urlpatterns = [
     url(r'^logout/$', logout, name="logout"),
     url(r'^mypage/$', mypage, name="mypage"),
     url(r'^mypage/profile$', profile, name="profile"),
+    url(r'^mypage/update_profile$', update_profile, name="update_profile"),
     
 ]
